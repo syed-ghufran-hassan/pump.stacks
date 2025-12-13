@@ -1,0 +1,39 @@
+---
+id: 0
+name: Testnet deployment
+network: testnet
+stacks-node: "https://api.testnet.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoind.testnet.stacks.co:18332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: sip-010-trait
+            expected-sender: ST3X3BFB45HH3K5YSJJ7ZNSH8ZE1R3JK3PQ3HXGN0
+            cost: 6430
+            path: "contracts\\sip-010-trait.clar"
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: bonding-curve
+            expected-sender: ST3X3BFB45HH3K5YSJJ7ZNSH8ZE1R3JK3PQ3HXGN0
+            cost: 47910
+            path: "contracts\\bonding-curve.clar"
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: memecoin
+            expected-sender: ST3X3BFB45HH3K5YSJJ7ZNSH8ZE1R3JK3PQ3HXGN0
+            cost: 29250
+            path: "contracts\\memecoin.clar"
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: mock-dex
+            expected-sender: ST3X3BFB45HH3K5YSJJ7ZNSH8ZE1R3JK3PQ3HXGN0
+            cost: 3670
+            path: "contracts\\mock-dex.clar"
+            anchor-block-only: true
+            clarity-version: 3
+      epoch: "3.0"

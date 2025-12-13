@@ -1,0 +1,46 @@
+[project]
+name = 'stxfun'
+description = ''
+authors = []
+telemetry = true
+cache_dir = '.\.cache'
+requirements = []
+
+# 1. The Trait (Must be first, no dependencies)
+[contracts.sip-010-trait]
+path = 'contracts/sip-010-trait.clar'
+clarity_version = 3
+epoch = 3.0
+
+# 2. The Token (Depends on the Trait)
+[contracts.memecoin]
+path = 'contracts/memecoin.clar'
+clarity_version = 3
+epoch = 3.0
+depends_on = ["sip-010-trait"]
+
+# 3. The Mock DEX (Independent tool)
+[contracts.mock-dex]
+path = 'contracts/mock-dex.clar'
+clarity_version = 3
+epoch = 3.0
+
+# 4. The Bonding Curve (Depends on Trait, Token, and DEX)
+[contracts.bonding-curve]
+path = 'contracts/bonding-curve.clar'
+clarity_version = 3
+epoch = 3.0
+depends_on = ["sip-010-trait", "memecoin", "mock-dex"]
+
+[repl.analysis]
+passes = ['check_checker']
+
+[repl.analysis.check_checker]
+strict = false
+trusted_sender = false
+trusted_caller = false
+callee_filter = false
+
+[repl.remote_data]
+enabled = false
+api_url = 'https://api.hiro.so'
